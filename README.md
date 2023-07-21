@@ -11,7 +11,10 @@ $ErrorActionPreference = "Stop"
 Set-Location C:\workspace\powershell_odbc\
 
 Import-Module .\Invoke-OdbcSelectSql.ps1
+
 Invoke-OdbcSelectSql -conString "dsn=postgres_x64" -sqlString "select * from work.test" |
-Export-Csv -Path ".\test.csv" -NoTypeInformation
+ConvertTo-Csv -NoTypeInformation |
+ForEach-Object {$_ -replace '"',''} |
+Out-File -FilePath ".\test.csv" -Encoding Default
 
 ```
