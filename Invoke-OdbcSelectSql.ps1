@@ -39,7 +39,6 @@ function Invoke-OdbcSelectSql
         $rdr = $cmd.ExecuteReader()
 
         # HEADER
-        $columnNames = @()
         $columnNames = @($rdr.GetSchemaTable() | Select-Object -ExpandProperty ColumnName)
           
         # BODY
