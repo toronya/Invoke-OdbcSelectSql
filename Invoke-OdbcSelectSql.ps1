@@ -40,7 +40,7 @@ function Invoke-OdbcSelectSql
 
         # HEADER
         $columnNames = @()
-        $columnNames = $rdr.GetSchemaTable() | Select-Object -ExpandProperty ColumnName
+        $columnNames = @($rdr.GetSchemaTable() | Select-Object -ExpandProperty ColumnName)
           
         # BODY
         $LineCount = 0
