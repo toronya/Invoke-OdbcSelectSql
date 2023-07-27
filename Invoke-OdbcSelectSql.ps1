@@ -42,7 +42,6 @@ function Invoke-OdbcSelectSql
         $columnNames = @($rdr.GetSchemaTable() | Select-Object -ExpandProperty ColumnName)
           
         # BODY
-        $LineCount = 0
         while ($rdr.Read()) {
             $result = [ordered]@{}
             for ($i=0; $i -lt $rdr.FieldCount; $i++) {
